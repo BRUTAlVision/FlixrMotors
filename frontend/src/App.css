@@ -1,4 +1,4 @@
-/* ELIXR MOTORS - Dark Theme CSS following uix-labs guidelines */
+/* ELIXR MOTORS - Chrome Gray Theme CSS following uix-labs guidelines */
 
 @font-face {
   font-family: 'KodeMono';
@@ -16,16 +16,17 @@
   /* Text - High Contrast for Dark Theme */
   --text-primary: #FFFFFF;
   --text-secondary: rgba(255, 255, 255, 0.85);
-  --text-muted: #4D4D4D;
+  --text-muted: #666666;
   
   /* Borders - Subtle Dark Theme */
   --border-subtle: rgba(255, 255, 255, 0.25);
   --border-medium: rgba(255, 255, 255, 0.4);
   
-  /* MAIN ACCENT COLORS - Brand Colors Only */
-  --brand-primary: #00FFD1;
-  --brand-hover: rgba(0, 255, 209, 0.1);
-  --brand-active: #6FD2C0;
+  /* MAIN ACCENT COLORS - Chrome Gray Theme */
+  --brand-primary: #C0C0C0;
+  --brand-hover: rgba(192, 192, 192, 0.1);
+  --brand-active: #A8A8A8;
+  --brand-dark: #808080;
 }
 
 * {
@@ -58,7 +59,7 @@ body {
 .body-muted { font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; color: var(--text-muted); }
 
 .button-text { font-size: 18px; font-weight: 500; line-height: 1.2; letter-spacing: 0; }
-.nav-text { font-size: 18px; font-weight: 400; line-height: 1.4; letter-spacing: 0; }
+.nav-text { font-size: 18px; font-weight: 400; line-height: 1.4; letter-spacing: 0; color: var(--text-secondary); }
 
 /* Button Styles - Sharp edges following uix-labs */
 .btn-primary {
@@ -85,7 +86,7 @@ body {
   background: var(--brand-hover);
   color: var(--brand-primary);
   transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(0, 255, 209, 0.3);
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
 }
 
 .btn-primary:active {
@@ -164,7 +165,15 @@ body {
 
 .dark-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 255, 209, 0.2);
+  box-shadow: 0 8px 32px rgba(192, 192, 192, 0.2);
+}
+
+/* Chrome gradient effect */
+.chrome-gradient {
+  background: linear-gradient(135deg, #C0C0C0 0%, #808080 50%, #C0C0C0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Responsive Design */

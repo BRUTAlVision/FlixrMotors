@@ -51,13 +51,14 @@ const Header = () => {
         display: 'flex',
         alignItems: 'center',
         gap: '32px'
-      }} className="hidden md:flex">
+      }} className="desktop-nav">
         {navigationMenu.map((item, index) => (
           <button
             key={index}
             onClick={() => scrollToSection(item.href)}
+            className="nav-text"
             style={{
-              color: 'var(--text-muted)',
+              color: 'var(--text-secondary)',
               textDecoration: 'none',
               fontSize: '18px',
               fontWeight: 400,
@@ -66,9 +67,8 @@ const Header = () => {
               border: 'none',
               cursor: 'pointer'
             }}
-            className="nav-link"
             onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
-            onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}
+            onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
           >
             {item.label}
           </button>
@@ -78,7 +78,7 @@ const Header = () => {
           onClick={() => scrollToSection('#contact')}
           className="btn-primary"
         >
-          Get Started
+          Early Access
         </button>
       </nav>
 
@@ -86,14 +86,14 @@ const Header = () => {
       <button
         onClick={toggleMenu}
         style={{
-          display: 'block',
+          display: 'none',
           background: 'none',
           border: 'none',
           color: 'var(--text-primary)',
           cursor: 'pointer',
           padding: '8px'
         }}
-        className="md:hidden"
+        className="mobile-menu-btn"
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
@@ -111,13 +111,13 @@ const Header = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: '20px'
-        }} className="md:hidden">
+        }} className="mobile-nav">
           {navigationMenu.map((item, index) => (
             <button
               key={index}
               onClick={() => scrollToSection(item.href)}
               style={{
-                color: 'var(--text-muted)',
+                color: 'var(--text-secondary)',
                 textDecoration: 'none',
                 fontSize: '18px',
                 fontWeight: 400,
@@ -137,18 +137,30 @@ const Header = () => {
             className="btn-primary"
             style={{ marginTop: '10px', alignSelf: 'flex-start' }}
           >
-            Get Started
+            Early Access
           </button>
         </nav>
       )}
 
       <style jsx>{`
-        @media (min-width: 768px) {
-          .hidden { display: none !important; }
-          .md\\:flex { display: flex !important; }
-          .md\\:hidden { display: none !important; }
+        @media (min-width: 769px) {
+          .desktop-nav {
+            display: flex !important;
+          }
+          .mobile-menu-btn {
+            display: none !important;
+          }
+          .mobile-nav {
+            display: none !important;
+          }
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-menu-btn {
+            display: block !important;
+          }
           header {
             padding: 16px 20px !important;
             height: 70px !important;

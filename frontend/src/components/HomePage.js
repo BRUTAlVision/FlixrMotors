@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Hero from './Hero';
+import PlatformPreview from './PlatformPreview';
 import SuccessStory from './SuccessStory';
 import BusinessEdge from './BusinessEdge';
 import Leadership from './Leadership';
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Header />
       <main>
         <Hero />
+        <PlatformPreview />
         <SuccessStory />
         <BusinessEdge />
         <Leadership />
