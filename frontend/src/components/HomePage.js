@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
 import Hero from './Hero';
 import PlatformPreview from './PlatformPreview';
 import SuccessStory from './SuccessStory';
@@ -11,14 +10,23 @@ import Footer from './Footer';
 const HomePage = () => {
   return (
     <div className="dark-container">
-      <Header />
       <main>
-        <Hero />
-        <PlatformPreview />
-        <SuccessStory />
+        <div id="home">
+          <Hero />
+        </div>
+        <div id="platform">
+          <PlatformPreview />
+        </div>
+        <div id="about">
+          <SuccessStory />
+        </div>
         <BusinessEdge />
-        <Leadership />
-        <ContactForm />
+        <div id="leadership">
+          <Leadership />
+        </div>
+        <div id="contact">
+          <ContactForm />
+        </div>
       </main>
       <Footer />
     </div>

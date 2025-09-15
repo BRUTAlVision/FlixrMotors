@@ -1,18 +1,37 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { companyInfo, navigationMenu } from '../data/mock';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (item) => {
+    if (item.href === '#inventory') {
+      navigate('/inventory');
+    } else {
+      // For home page sections, navigate to home first, then scroll
+      if (window.location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.querySelector(item.href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(item.href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
     setIsMenuOpen(false);
   };
@@ -42,7 +61,7 @@ const Header = () => {
             objectFit: 'contain',
             cursor: 'pointer'
           }}
-          onClick={() => scrollToSection('#home')}
+          onClick={() => navigate('/')}
         />
       </div>
 
@@ -55,7 +74,7 @@ const Header = () => {
         {navigationMenu.map((item, index) => (
           <button
             key={index}
-            onClick={() => scrollToSection(item.href)}
+            onClick={() => handleNavigation(item)}
             className="nav-text"
             style={{
               color: 'var(--text-secondary)',
@@ -75,7 +94,7 @@ const Header = () => {
         ))}
         
         <button
-          onClick={() => scrollToSection('#contact')}
+          onClick={() => handleNavigation({ href: '#contact' })}
           className="btn-primary"
         >
           Early Access
@@ -115,7 +134,7 @@ const Header = () => {
           {navigationMenu.map((item, index) => (
             <button
               key={index}
-              onClick={() => scrollToSection(item.href)}
+              onClick={() => handleNavigation(item)}
               style={{
                 color: 'var(--text-secondary)',
                 textDecoration: 'none',
@@ -133,7 +152,7 @@ const Header = () => {
           ))}
           
           <button
-            onClick={() => scrollToSection('#contact')}
+            onClick={() => handleNavigation({ href: '#contact' })}
             className="btn-primary"
             style={{ marginTop: '10px', alignSelf: 'flex-start' }}
           >

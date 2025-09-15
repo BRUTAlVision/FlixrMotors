@@ -120,6 +120,7 @@ export const submitInquiry = async (formData) => {
 // Navigation menu
 export const navigationMenu = [
   { label: "Home", href: "#home" },
+  { label: "Inventory", href: "#inventory" },
   { label: "Platform", href: "#platform" },
   { label: "About", href: "#about" },  
   { label: "Leadership", href: "#leadership" },
